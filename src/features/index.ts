@@ -1,0 +1,1 @@
+export {RestaurantsStack} from './restaurants';

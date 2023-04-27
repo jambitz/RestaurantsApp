@@ -1,0 +1,11 @@
+- configurar env
+- imports @
+- types
+- manejo de errores
+- Icono de app
+- tipar SCREEN_NAMES
+- agregar splash
+- fix ios Geolocation.requestAuthorization() https://dev-yakuza.posstree.com/en/react-native/react-native-geolocation-service/#configure-ios-permission
+- agregar wp hp
+- loader y isdisble de botones
+- dismis keyboard
