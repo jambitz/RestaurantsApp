@@ -19,7 +19,7 @@ module.exports = {
         root: ['.'],
         alias: {
           '@api': './src/api',
-          '@assets': './src/assets',
+          '@assets': './assets',
           '@components': './src/components',
           '@constants': './src/constants',
           '@config': './src/config',

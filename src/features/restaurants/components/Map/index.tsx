@@ -4,11 +4,12 @@ import {styles} from './styles';
 import MapView, {Marker} from 'react-native-maps';
 import {Coordinates, Restaurant} from '@types';
 import {GEOLOCATION} from '@constants';
+import {BottomSheetFlatListMethods} from '@gorhom/bottom-sheet';
 
 interface MapProps {
   restaurants?: Restaurant[];
   location: Coordinates;
-  listRef: any;
+  listRef: React.RefObject<BottomSheetFlatListMethods>;
 }
 
 const Map = ({restaurants, location, listRef}: MapProps) => {
@@ -16,7 +17,7 @@ const Map = ({restaurants, location, listRef}: MapProps) => {
     () =>
       restaurants &&
       restaurants
-        .filter(m => !isNaN(m.latitude) && !isNaN(m.longitude))
+        .filter(m => !isNaN(Number(m.latitude)) && !isNaN(Number(m.longitude)))
         .map((restuarant, index) => (
           <Marker
             identifier={restuarant.location_id}

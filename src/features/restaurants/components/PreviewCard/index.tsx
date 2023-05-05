@@ -5,6 +5,7 @@ import {styles} from './styles';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faStar} from '@fortawesome/free-solid-svg-icons/faStar';
 import {faLocationDot} from '@fortawesome/free-solid-svg-icons/faLocationDot';
+import {chefIMG} from '@assets';
 
 interface PreviewCardProps {
   name: string;
@@ -47,7 +48,9 @@ const PreviewCard = ({
           </View>
           <Image
             style={styles.image}
-            source={{uri: thumbnail, width: 70, height: 70}}
+            source={
+              thumbnail ? {uri: thumbnail, width: 70, height: 70} : chefIMG
+            }
           />
         </View>
       </>

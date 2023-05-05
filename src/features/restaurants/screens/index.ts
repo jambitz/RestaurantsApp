@@ -4,13 +4,10 @@ import {RestaurantsLocator} from './RestaurantsLocator';
 
 const Screens = {
   SearchRestaurants: {
-    name: SCREEN_NAMES.SEARCH_RESTAURANTS,
+    name: SCREEN_NAMES.RESTAURANTS_LOCATOR,
     component: RestaurantsLocator,
     options: {
       headerShown: false,
-      title: 'Restaurants Locator ',
-      headerStyle: {backgroundColor: COLORS.DARK_BLUE},
-      headerTintColor: COLORS.LIGHTBLUE,
     },
   },
   RestaurantDetail: {

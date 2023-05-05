@@ -1,16 +1,16 @@
 import {useQuery} from '@tanstack/react-query';
 
-import {QUERY_KEYS} from '../constants';
-import {ApiRestaurants} from '../api';
+import {QUERY_KEYS} from '@constants';
+import {ApiRestaurants} from '@api';
 
 const useRestaurant = (locationId: string) => {
-  const {data, isError, isLoading, isFetching} = useQuery(
-    [QUERY_KEYS.GET_RESTAURANT_DETAIL],
+  const {data, isError, isLoading} = useQuery(
+    [QUERY_KEYS.GET_RESTAURANT_DETAIL, locationId],
     () => ApiRestaurants.getRestaurantDetail(locationId),
-    {enabled: !!locationId},
+    {enabled: !!locationId, staleTime: 60000},
   );
 
-  return {restaurant: data, isError, isLoading: isLoading || isFetching};
+  return {restaurant: data, isError, isLoading: isLoading};
 };
 
 export {useRestaurant};

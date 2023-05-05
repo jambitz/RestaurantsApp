@@ -5,19 +5,25 @@ import {TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 import {GeolocationUtils} from '@utils';
 
-const CurrentLocationButton = ({onPress, inputRef}: any) => {
-  return (
-    <>
-      <TouchableOpacity
-        onPress={() => {
-          GeolocationUtils.getCurrentLocation(onPress);
-          inputRef.current.setAddressText('');
-        }}
-        style={styles.container}>
-        <FontAwesomeIcon icon={faLocationCrosshairs} style={styles.icon} />
-      </TouchableOpacity>
-    </>
-  );
-};
+interface CurrentLocationButtonProps {
+  onPress: () => void;
+  onClear?: () => void;
+}
+
+const CurrentLocationButton = ({
+  onPress,
+  onClear,
+}: CurrentLocationButtonProps) => (
+  <>
+    <TouchableOpacity
+      onPress={() => {
+        GeolocationUtils.getCurrentLocation(onPress);
+        onClear?.();
+      }}
+      style={styles.container}>
+      <FontAwesomeIcon icon={faLocationCrosshairs} style={styles.icon} />
+    </TouchableOpacity>
+  </>
+);
 
 export {CurrentLocationButton};

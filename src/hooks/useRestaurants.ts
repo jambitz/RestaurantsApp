@@ -1,17 +1,17 @@
 import {useQuery} from '@tanstack/react-query';
-import {ApiRestaurants} from '../api';
-import {QUERY_KEYS} from '../constants';
-import {Coordinates} from '../types';
+import {ApiRestaurants} from '@api';
+import {QUERY_KEYS} from '@constants';
+import {Coordinates} from '@types';
 
 const useRestaurants = ({latitude, longitude}: Coordinates) => {
-  const {data, isError, isLoading, isFetching} = useQuery(
+  const {data, isError, isFetching, isSuccess} = useQuery(
     [QUERY_KEYS.GET_RESTAURANTS, {latitude, longitude}],
     () =>
       ApiRestaurants.getRestaurants({
         latitude: latitude!.toString(),
         longitude: longitude!.toString(),
       }),
-    {enabled: !!latitude && !!longitude},
+    {enabled: !!latitude && !!longitude, staleTime: 60000},
   );
 
   const restaurants = data?.data
@@ -19,7 +19,7 @@ const useRestaurants = ({latitude, longitude}: Coordinates) => {
     .sort((a, b) => Number(b.rating) - Number(a.rating))
     .slice(0, 10);
 
-  return {restaurants, isError, isLoading: isLoading || isFetching};
+  return {restaurants, isError, isFetching, isSuccess};
 };
 
 export {useRestaurants};

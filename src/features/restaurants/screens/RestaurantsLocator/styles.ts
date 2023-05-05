@@ -9,6 +9,15 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.METALLIC_BLUE,
     alignItems: 'center',
   },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  loader: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: '50%',
+  },
 });
 
 export {styles};

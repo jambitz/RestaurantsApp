@@ -63,3 +63,9 @@ export interface Restaurant {
   dietary_restrictions: any;
   establishment_types: any;
 }
+
+export interface ReviewCardProps {
+  title: string;
+  author: string;
+  summary: string;
+}

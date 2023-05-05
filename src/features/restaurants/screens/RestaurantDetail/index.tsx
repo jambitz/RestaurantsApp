@@ -8,13 +8,21 @@ import {faMapLocationDot} from '@fortawesome/free-solid-svg-icons/faMapLocationD
 import {faKitchenSet} from '@fortawesome/free-solid-svg-icons/faKitchenSet';
 import {FlatList, Image} from 'react-native';
 import {ReviewCard} from '../../components';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {StackParamList} from '@navigation';
+import {useRoute} from '@react-navigation/native';
+import {ReviewCardProps} from '@types';
 
 interface Cuisine {
   name: string;
 }
 
-const RestaurantDetail = ({route}: any) => {
-  const {locationId} = route.params;
+type Props = NativeStackScreenProps<StackParamList, 'RESTAURANT_DETAIL'>;
+
+const RestaurantDetail = () => {
+  const {
+    params: {locationId},
+  } = useRoute<Props['route']>();
 
   const {restaurant, isLoading} = useRestaurant(locationId);
 
@@ -62,13 +70,13 @@ const RestaurantDetail = ({route}: any) => {
             </View>
           </>
         </Card>
-        <FlatList
+        <FlatList<ReviewCardProps>
           contentContainerStyle={{
             width: Dimensions.get('window').width,
             height: Dimensions.get('window').height,
           }}
           data={restaurant?.reviews.slice(0, 10)}
-          renderItem={({item}: any) => (
+          renderItem={({item}) => (
             <ReviewCard
               title={item.title}
               author={item.author}

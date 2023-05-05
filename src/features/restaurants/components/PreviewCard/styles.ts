@@ -30,6 +30,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   image: {
+    width: 70,
+    height: 70,
     alignSelf: 'flex-end',
     borderColor: COLORS.METALLIC_BLUE,
     borderRadius: 70,

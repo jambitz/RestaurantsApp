@@ -1,3 +1,4 @@
+import {Coordinates} from '@types';
 import {PermissionsAndroid, Platform} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 
@@ -13,7 +14,9 @@ const requestPermissions = async () => {
   }
 };
 
-const getCurrentLocation = (onSuccess: any) => {
+type OnSuccess = (cordinates: Coordinates) => void;
+
+const getCurrentLocation = (onSuccess: OnSuccess) => {
   requestPermissions();
   return Geolocation.getCurrentPosition(
     position => {

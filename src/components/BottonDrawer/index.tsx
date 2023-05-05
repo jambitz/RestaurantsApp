@@ -1,5 +1,6 @@
-import React, {useCallback, useMemo, useRef} from 'react';
+import React, {useMemo, useRef} from 'react';
 import BottomSheet from '@gorhom/bottom-sheet';
+import {styles} from './styles';
 
 interface BottonDrawerProps {
   children: JSX.Element;
@@ -9,16 +10,14 @@ const BottonDrawer = ({children}: BottonDrawerProps) => {
 
   const snapPoints = useMemo(() => ['25%', '50%'], []);
 
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-  }, []);
-
   return (
     <BottomSheet
       ref={bottomSheetRef}
       index={1}
-      snapPoints={snapPoints}
-      onChange={handleSheetChanges}>
+      backgroundStyle={styles.background}
+      handleStyle={styles.handle}
+      handleIndicatorStyle={styles.handleIndicator}
+      snapPoints={snapPoints}>
       {children}
     </BottomSheet>
   );

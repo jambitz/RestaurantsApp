@@ -6,12 +6,7 @@ import {styles} from './styles';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faBookOpen} from '@fortawesome/free-solid-svg-icons/faBookOpen';
 import {faPerson} from '@fortawesome/free-solid-svg-icons/faPerson';
-
-interface ReviewCardProps {
-  title: string;
-  author: string;
-  summary: string;
-}
+import {ReviewCardProps} from '@types';
 
 const ReviewCard = ({title, author, summary}: ReviewCardProps) => {
   return (

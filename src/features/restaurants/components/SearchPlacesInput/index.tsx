@@ -43,9 +43,17 @@ const SearchPlacesInput = ({onPress}: any) => {
           placeholderTextColor: COLORS.LIGHTBLUE,
           autoFocus: true,
         }}
-        renderRightButton={() => ClearButton(ref)}
+        renderRightButton={() => (
+          <ClearButton
+            inputText={ref.current?.getAddressText()}
+            onPress={() => ref.current?.setAddressText('')}
+          />
+        )}
         renderLeftButton={() => (
-          <CurrentLocationButton onPress={onPress} inputRef={ref} />
+          <CurrentLocationButton
+            onPress={onPress}
+            onClear={() => ref.current?.setAddressText('')}
+          />
         )}
       />
     </View>
